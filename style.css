@@ -1,5 +1,5 @@
 body{
-    background-color: slategray !important;
+    background-color: rgb(232, 236, 240) !important;
 }
 .left-nav a{
     text-decoration: none;
@@ -10,4 +10,15 @@ body{
 .left-nav a:hover{
     color:slateblue;
     border-bottom: 3px solid slateblue;
+}
+#category-list li {
+    list-style: none;
+    display: inline;
+    padding-right: 60px;
+    cursor: pointer;
+}
+#category-list li a{
+text-decoration: none;
+color:black;
+font-size: 16px;
 }
