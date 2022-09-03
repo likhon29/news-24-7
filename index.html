@@ -23,8 +23,8 @@
         </nav>
         <div>
             <div class="left-nav">
-                <a href="" class="me-5" style="text-decoration:none;" active>News</a>
-                <a href="" class="me-5">Blogs</a>
+                <a href="index.html" class="me-5" style="text-decoration:none;" active>News</a>
+                <a href="blogs.html" class="me-5">Blogs</a>
                 <img src="images/mypp.jpg" style="width: 80px; border-radius:50%" alt="" >
             </div> 
         </div>
@@ -34,14 +34,28 @@
     <!-- main content -->
     <main class="container">
         <hr>
-        <!-- Categories Section -->
+        <!-- News -->
+        <section id="news">
+              <!-- Categories Section -->
         <div class="container d-flex justify-content-around fs-5"  style="cursor:pointer" id="categoriesContainer">
             <span>Home</span>
         </div>
+       
         <!-- values of items section -->
         <div id="valuesOfCategory" class="border rounded p-4 text-start m-5 fs-3 bg-white">
             
         </div>
+          <!-- Spin loader -->
+          <section id="spinner" class="d-none">
+            <div
+              style="height:50px"
+              class="d-flex justify-content-center align-items-center"
+            >
+              <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </section>   
         <!-- news container -->
         <div class="news-container">
             <div id="allNews" class="mt-5">
@@ -52,6 +66,8 @@
         <section id="news-feed">
 
         </section>
+        </section>
+        
     </main>
     <!-- footer -->
     <footer class="text-center bg-light p-3">

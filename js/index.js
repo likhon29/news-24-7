@@ -6,24 +6,28 @@ const loadNews = () => {
   };
   const displayCategories = (categories) => {
     console.log(categories);
-    let categoriesContainer = document.getElementById("categoriesContainer");
+    const categoriesContainer = document.getElementById("categoriesContainer");
     categories.forEach((category) => {
       const span = document.createElement("span");
       span.innerHTML = `
           <span onclick="categoriesContent(${category.category_id})">${category.category_name}</span>
           `;
-      categoriesContainer.appendChild(span);
+        categoriesContainer.appendChild(span);
+        
     });
   };
   
-  const categoriesContent = (id) => {
+const categoriesContent = (id) => {
+      //   start spinners
+      toggleSpinner(true);
     console.log(id);
     const url = `https://openapi.programming-hero.com/api/news/category/${
       "0" + id
     }`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => displayCategoriesContent(data.data));
+          .then((data) => displayCategoriesContent(data.data));
+    
   };
   
   const displayCategoriesContent = (data) => {
@@ -68,9 +72,10 @@ const loadNews = () => {
               </div>
           </div>
               `
+              
               document.getElementById('valuesOfCategory').innerText = data.length + ' Items founds for Category';
               allNews.appendChild(div)
-  
+
           })
       }
       else {
@@ -87,9 +92,18 @@ const loadNews = () => {
   
   
       }
+        //   stop spinners 
+        toggleSpinner(false);
   }
   
-  
+  const toggleSpinner = (isLoading) => {
+    const loaderSection = document.getElementById("spinner");
+    if (isLoading) {
+      loaderSection.classList.remove("d-none");
+    } else {
+      loaderSection.classList.add("d-none");
+    }
+  };
   
   loadNews();
   
