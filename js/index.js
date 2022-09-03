@@ -2,10 +2,13 @@ const loadNews = () => {
   const url = `https://openapi.programming-hero.com/api/news/categories`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayCategories(data.data.news_category));
+    .then((data) => displayCategories(data.data.news_category))
+    .catch((error) => {
+      throw error;
+    });
 };
+
 const displayCategories = (categories) => {
-  
   const categoriesContainer = document.getElementById("categoriesContainer");
   categories.forEach((category) => {
     const span = document.createElement("span");
@@ -19,16 +22,23 @@ const displayCategories = (categories) => {
 const categoriesContent = (id) => {
   //   start spinners
   toggleSpinner(true);
- 
+
   const url = `https://openapi.programming-hero.com/api/news/category/${
     "0" + id
   }`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayCategoriesContent(data.data));
+    .then((data) => displayCategoriesContent(data.data))
+    .catch((error) => {
+      throw error;
+    });
 };
 
 const displayCategoriesContent = (data) => {
+  // sort by views
+  data.sort(function (a, b) {
+    return b.total_view - a.total_view;
+  });
   let allNews = document.getElementById("allNews");
   allNews.textContent = "";
   if (data.length > 0) {
@@ -98,8 +108,8 @@ const displayCategoriesContent = (data) => {
     let div = document.createElement("div");
     div.classList.add("p-5");
     div.innerHTML = `
-              <div class="card mb-3 p-5">
-              <h1 class='text-center'>No Content</h1>
+              <div class="card mb-3 p-5" style="height:300px">
+              <h1 class='text-center'>No Content <br> Available for Categories</h1>
               </div>
               `;
     document.getElementById("valuesOfCategory").innerText =
@@ -124,24 +134,28 @@ function showAllDetails(news_id) {
   console.log(url);
   fetch(url)
     .then((res) => res.json())
-    .then((data) => disPlay(data.data));
+    .then((data) => disPlay(data.data))
+    .catch((error) => {
+      throw error;
+    });
 }
 const disPlay = (data) => {
-    console.log(data[0].title);
-    
-    data.forEach(news => {
-        const modalTitle = document.getElementById("newsDetailModalLabel");
-  modalTitle.innerText = news.title;
-  const newsDetails = document.getElementById("news-details");
-  newsDetails.innerHTML = `
-    <img src="${news.image_url}" class="card-img-top p-2 w-100 h-50 " alt="Not Found" />
-    <p>Author: ${news.author.name ? news.author.name:"No data found"  }</p>
-    <p>Publish Date: ${news.author.published_date ? news.author.published_date:"No data found" }</p>
+  data.forEach((news) => {
+    const modalTitle = document.getElementById("newsDetailModalLabel");
+    modalTitle.innerText = news.title;
+    const newsDetails = document.getElementById("news-details");
+    newsDetails.innerHTML = `
+    <img src="${
+      news.image_url
+    }" class="card-img-top p-2 w-100 h-50 " alt="Not Found" />
+    <p>Author: ${news.author.name ? news.author.name : "No data found"}</p>
+    <p>Publish Date: ${
+      news.author.published_date ? news.author.published_date : "No data found"
+    }</p>
     <p>Total View: ${news.total_view}</p>
     `;
-  console.log(modalTitle.innerText);
-    })
-
-  
+    console.log(modalTitle.innerText);
+  });
 };
+categoriesContent(8);
 loadNews();
