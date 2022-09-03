@@ -1,0 +1,13 @@
+body{
+    background-color: slategray !important;
+}
+.left-nav a{
+    text-decoration: none;
+    color: black;
+    font-size: 26px;
+    cursor: pointer;
+}
+.left-nav a:hover{
+    color:slateblue;
+    border-bottom: 3px solid slateblue;
+}
