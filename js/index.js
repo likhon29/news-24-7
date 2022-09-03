@@ -68,7 +68,7 @@ const loadNews = () => {
               </div>
           </div>
               `
-           
+              document.getElementById('valuesOfCategory').innerText = data.length + ' Items founds for Category';
               allNews.appendChild(div)
   
           })
@@ -82,14 +82,14 @@ const loadNews = () => {
               <h1 class='text-center'>No Content</h1>
               </div>
               `
-       
+          document.getElementById('valuesOfCategory').innerText = data.length + ' Items founds for Category'
           allNews.appendChild(div)
   
   
       }
   }
   
- 
-
+  
+  
   loadNews();
   
