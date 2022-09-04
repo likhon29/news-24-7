@@ -11,14 +11,27 @@ body{
     color:slateblue;
     border-bottom: 3px solid slateblue;
 }
-#category-list li {
+#categoriesContainer span {
     list-style: none;
     display: inline;
-    padding-right: 60px;
+    /* padding-right: 60px; */
     cursor: pointer;
 }
-#category-list li a{
+/* #category-list li a{
 text-decoration: none;
 color:black;
 font-size: 16px;
+} */
+@media only screen and (max-width: 778px) {
+    .container-fluid{
+        display: inline;
+        
+    }
+    .left-nav{
+        margin-top: 10px;
+    }
+    .img-con{
+        display:none;
+    }
 }
+

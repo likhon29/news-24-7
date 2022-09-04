@@ -13,7 +13,7 @@ const displayCategories = (categories) => {
   categories.forEach((category) => {
     const span = document.createElement("span");
     span.innerHTML = `
-          <span onclick="categoriesContent(${category.category_id})">${category.category_name}</span>
+          <span class="p-3" onclick="categoriesContent(${category.category_id})">${category.category_name}</span>
           `;
     categoriesContainer.appendChild(span);
   });
@@ -62,7 +62,7 @@ const displayCategoriesContent = (data) => {
                               : element.details
                           }</p>
                           <div class='d-flex justify-content-between align-items-center'>
-                          <div class='d-flex align-items-center'>
+                          <div class='d-flex align-items-center pe-3'>
                               <span class='me-3'><img src="${
                                 element.author.img
                               }" style='width:50px ;border-radius:50%' alt="" /></span>
@@ -101,7 +101,7 @@ const displayCategoriesContent = (data) => {
               `;
 
       document.getElementById("valuesOfCategory").innerText =
-        data.length + " Items founds for Category";
+        data.length + " Items founds for this Category";
       allNews.appendChild(div);
     });
   } else {
@@ -113,7 +113,7 @@ const displayCategoriesContent = (data) => {
               </div>
               `;
     document.getElementById("valuesOfCategory").innerText =
-      data.length + " Items founds for Category";
+      data.length + " Items founds for this Category";
     allNews.appendChild(div);
   }
   //   stop spinners
