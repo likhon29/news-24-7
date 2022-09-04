@@ -9,23 +9,15 @@ body{
 }
 .left-nav a:hover{
     color:slateblue;
-    border-bottom: 3px solid slateblue;
+    border-bottom: 2px solid slateblue;
 }
-#categoriesContainer span {
-    list-style: none;
-    display: inline;
-    /* padding-right: 60px; */
-    cursor: pointer;
+#categoriesContainer span:hover{
+    color:slateblue;
+    /* border-bottom: 2px solid slateblue; */
 }
-/* #category-list li a{
-text-decoration: none;
-color:black;
-font-size: 16px;
-} */
 @media only screen and (max-width: 778px) {
     .container-fluid{
         display: inline;
-        
     }
     .left-nav{
         margin-top: 10px;
